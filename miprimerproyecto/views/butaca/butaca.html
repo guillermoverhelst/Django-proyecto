@@ -1,0 +1,64 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% include 'estilos.html' %}
+
+</head>
+<body>
+{% include 'menu.html' %}
+ <div  class="input-group mb-3 container mt-3"  >
+     <input type="hidden" id="idcine">
+    <input type="text" class="form-control" placeholder="Ingrese nombre cine"
+            aria-label="Ingrese nombre cine" aria-describedby="button-addon2" readonly id = "txtnombre">
+
+    <button class="btn btn-outline-primary" type="button" id="btnSeleccionar"
+            data-bs-toggle="modal" data-bs-target="#exampleModal"
+            onclick="abrirModalBusqueda()">Seleccione</button>
+
+     <button class="btn btn-outline-primary" type="button" id="btnLimpiar"
+             onclick="limpiarButaca()">Limpiar</button>
+
+</div>
+
+
+
+<div class="container">
+    <div id="divTabla"></div>
+</div>
+
+<div class="modal fade formsala" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+           <div id="divTablaSubpopup">
+
+
+           </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btncerrar" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" onclick="guardarDatos()" class="btn btn-primary">Guardar</button>
+      </div>
+        <div id="diverrores">
+
+        </div>
+    </div>
+  </div>
+</div>
+
+
+{% include 'scripts.html' %}
+<script type="text/javascript" src="{% static 'js/butaca.js'%}"></script>
+</body>
+</html>

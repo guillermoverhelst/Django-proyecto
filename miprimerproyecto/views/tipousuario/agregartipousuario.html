@@ -1,0 +1,63 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% include 'estilos.html'%}
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% include 'estilos.html'%}
+
+</head>
+<body>
+{% include 'menu.html'%}
+<div class="container">
+    <div class="container formtipousuario">
+{% csrf_token %}
+     <div class="mb-3 mt-3">
+          <label  class="form-label">Id Tipo Usuario</label>
+          <input type="text" class="form-control"   readonly id="txtidtipousuario"  placeholder="Id Tipo Usuario">
+    </div>
+
+    <div class="mb-3 mt-3">
+          <label  class="form-label">Nombre Tipo Usuario</label>
+          <input type="text" class="form-control" id="txtnombretipousuario" data-campo="Nombre" placeholder="Nombre Tipo Usuario">
+          <div id="divtxtnombretipousuario"></div>
+    </div>
+
+    <div class="mb-3 mt-3">
+          <label  class="form-label">Descripcion</label>
+          <input type="text" class="form-control" id="txtdescripcion" data-campo="Descripcion"
+                 placeholder="Descripcion">
+          <div id="divtxtdescripcion"></div>
+    </div>
+
+    <div id="divTabla"></div>
+
+    <div class="mb-3">
+
+      <input type="button" class="btn btn-success"  onclick="guardarDatos()" value="Guardar"/>
+        <a class="btn btn-danger" href="/tipousuario/listar/"
+        >Regresar</a>
+
+    </div>
+
+
+
+</div>
+</div>
+{% include 'scripts.html' %}
+<script type = "text/javascript" src = "{% static 'js/agregartipousuario.js' %}"></script>
+</body>
+</html>

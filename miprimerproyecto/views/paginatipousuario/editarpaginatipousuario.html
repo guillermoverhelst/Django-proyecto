@@ -1,0 +1,47 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% include 'estilos.html'%}
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% include 'estilos.html'%}
+
+</head>
+<body>
+{% include 'menu.html'%}
+<div class="container">
+    <div class="container formtipousuario">
+{% csrf_token %}
+<input type="hidden" id="txtiidpaginatipousuario" value="{{iidpaginatipousuario}}">
+
+    <div id="divTabla"></div>
+
+    <div class="mb-3">
+
+      <input type="button" class="btn btn-success"  onclick="guardarDatos()" value="Guardar"/>
+        <a class="btn btn-danger" href="/paginatipousuario/paginatipousuariohtml/"
+        >Regresar</a>
+
+    </div>
+
+
+
+</div>
+</div>
+{% include 'scripts.html' %}
+<script type = "text/javascript" src = "{% static 'js/editarpaginatipousuario.js' %}"></script>
+</body>
+</html>

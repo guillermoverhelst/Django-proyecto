@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% include "estilos.html"%}
+
+</head>
+<body>
+    {% include "menu.html"%}
+    <div class="container">
+        <h1>Agregar persona</h1>
+        <form method= "POST" action ="/persona/guardarpersona/" class="mb-3">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label  class="form-label">Id persona</label>
+                  <input type="text" class="form-control"  name="idpersona" readonly id="txtidpersona"  value="{{idpersona}}" placeholder="Id persona">
+                </div>
+
+                <div class="mb-3">
+                  <label  class="form-label">Dni persona</label>
+                  <input type="text" class="form-control" name="dni" value="{{objetopersona.dni}}" id="txtdni" placeholder="dni persona">
+                    {% if 'dni' in objetoError%}
+                        <p class="text-danger">{{objetoError.dni}}</p>
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                  <label  class="form-label">Nombre persona</label>
+                  <input type="text" class="form-control" name="nombre" value="{{objetopersona.nombre}}" id="txtnombre" placeholder="Nombre persona">
+                    {% if 'nombre' in objetoError%}
+                        <p class="text-danger">{{objetoError.nombre}}</p>
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                  <label  class="form-label">Apellido paterno</label>
+                  <input type="text" class="form-control" name="apaterno" value="{{objetopersona.apaterno}}" id="txtapterno" placeholder="Apellido paterno">
+                    {% if 'apaterno' in objetoError%}
+                        <p class="text-danger">{{objetoError.apaterno}}</p>
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                  <label  class="form-label">Apellido materno</label>
+                  <input type="text" class="form-control" name="amaterno" value="{{objetopersona.apaterno}}" id="txtamaterno" placeholder="Apellido materno">
+                    {% if 'amaterno' in objetoError%}
+                        <p class="text-danger">{{objetoError.amaterno}}</p>
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                  <label  class="form-label">Fecha nacimiento </label>
+                  <input type="date" class="form-control" name="fechanac" value="{{objetopersona.fechanac}}" id="txtfecha" placeholder="Fecha nacimiento">
+                </div>
+
+                <div class="mb-3">
+                  <label  class="form-label">Direccion</label>
+                  <input type="text" class="form-control" name="direccion" value="{{objetopersona.direccion}}" id="txtDireccion" placeholder="Direccion">
+                </div>
+
+                <div class="mb-3">
+                  <label  class="form-label">Telefono fijo </label>
+                  <input type="text" class="form-control" name="telefonofijo" value="{{objetopersona.telefonofijo}}" id="txttelefonofijo" placeholder="Telefono fijo">
+                </div>
+
+
+
+                <div class="mb-3">
+                  <label  class="form-label">Telefono celular </label>
+                  <input type="text" class="form-control" name="telefonocelular" value="{{objetopersona.telefonocelular}}" id="txttelefonocelular" placeholder="Telefono celular">
+                </div>
+
+
+                <div class="mb-3">
+                  <label  class="form-label">Seleccion sexo</label>
+                  <select name ="idsexo" class="form-control">
+                    <option value="0">
+                        Seleccione
+                    </option>
+                      {%for sexo in listasexo %}
+                          <option value="{{sexo.idsexo}}">
+                            {{sexo.nombre}}
+                          </option>
+                      {% endfor%}
+                  </select>
+                </div>
+
+
+                <div class="mb-3">
+
+                  <input type="submit" class="btn btn-success"  value="Guardar"/>
+                    <a class="btn btn-danger" href="/persona/listar/"
+                    >Regresar</a>
+                </div>
+
+        </form>
+    </div>
+    {% include "scripts.html" %}
+</body>
+</html>

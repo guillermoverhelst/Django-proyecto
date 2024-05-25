@@ -1,0 +1,43 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    {% include 'estilos.html' %}
+
+    <style>
+        .dataframe th{
+            text-align:right
+
+        }
+    </style>
+
+</head>
+<body>
+    {% include 'menu.html' %}
+
+    <div class="container mt-3">
+        <form method="POST" class="input-group mb-3" action="/tipocine/buscartipocine/">
+            {% csrf_token %}
+            <input type="text" class="form-control" placeholder="Ingrese nombre tipo cine" name = "nombre"
+                   value = "{{nombre}}" aria-label="Ingrese nombre tipo cine" aria-describedby="button-addon2">
+            <button class="btn btn-outline-primary" type="submit" id="button-addon2">Buscar</button>
+        </form>
+         <div>
+            {{ lista | safe }}
+        </div>
+    </div>
+
+
+    {% include 'scripts.html' %}
+
+<script>
+
+</script>
+</body>
+</html>

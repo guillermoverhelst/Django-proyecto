@@ -1,0 +1,31 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% include "estilos.html"%}
+</head>
+<body>
+
+    {% include "menu.html"%}
+    <div class="container">
+        <a class="btn btn-outline-primary" href="/persona/agregarpersona/"
+        >Nuevo</a>
+    </div>
+    <div  class="input-group mb-3 container mt-3"  >
+        <input type="text" class="form-control" placeholder="Ingrese nombre persona"
+                aria-label="Ingrese nombre cine" aria-describedby="button-addon2" id = "txtnombrepersona"
+                onkeyup="buscarPersona()"
+        >
+
+    </div>
+
+    <div id="divTabla" class = "container mt-3"></div>
+    {% include "scripts.html" %}
+<script type="text/javascript" src="{% static 'js/persona.js' %}" ></script>
+</body>
+</html>

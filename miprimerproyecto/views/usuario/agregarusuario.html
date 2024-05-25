@@ -1,0 +1,100 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% include 'estilos.html'%}
+</head>
+<body>
+{% include 'menu.html'%}
+<div class="container formusuario">
+{% csrf_token %}
+     <div class="mb-3 mt-3">
+          <label  class="form-label">Id Usuario</label>
+          <input type="text" class="form-control"   readonly id="txtidusuario"  placeholder="Id Usurio">
+    </div>
+
+    <div class="mb-3 mt-3">
+          <label  class="form-label">Nombre Usuario</label>
+          <input type="text" class="form-control" id="txtnombreusuario" data-campo="Nombre" placeholder="Nombre Usurio">
+          <div id="divtxtnombreusuario"></div>
+    </div>
+
+    <div class="mb-3 mt-3">
+          <label  class="form-label">Contraseña Usuario</label>
+          <input type="password" class="form-control" id="txtcontusuario" data-campo="Contraseña"
+                 placeholder="Contraseña Usuario">
+          <div id="divtxtcontusuario"></div>
+    </div>
+
+    <div class="mb-3 mt-3">
+        <label class="form-label">Tipo Usuario</label>
+        <div  class="input-group " >
+            <input type="hidden" id="txtidtipousuario">
+            <input type="text" readonly id="txtnombretiposuario" class="form-control" data-campo="Tipo usario"
+                   placeholder="Tipo Usuario"
+                   aria-label="Tipo Usuario" aria-describedby="button-addon2">
+            <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            onclick="abrirModal('Tipousuario')">Buscar</button>
+        </div>
+            <div id="divtxtnombretiposuario"></div>
+
+    </div>
+
+    <div class="mb-3 mt-3">
+        <label class="form-label">Persona</label>
+        <div  class="input-group " >
+            <input type="hidden" id="txtidpersona">
+            <input type="text" readonly id="txtpersona" class="form-control" data-campo="Persona" placeholder="Persona"
+                   aria-label="Persona" aria-describedby="button-addon2">
+            <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            onclick="abrirModal('Persona')">Buscar</button>
+        </div>
+            <div id="divtxtpersona"></div>
+
+    </div>
+
+
+    <div class="mb-3">
+
+      <input type="button" class="btn btn-success"  onclick="guardarDatos()" value="Guardar"/>
+        <a class="btn btn-danger" href="/usuario/listar/"
+        >Regresar</a>
+
+    </div>
+
+</div>
+
+<div class="modal fade formsala" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+           <div id="divTabla">
+
+
+           </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btncerrar" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" onclick="guardarDatos()" class="btn btn-primary">Guardar</button>
+      </div>
+        <div id="diverrores">
+
+        </div>
+    </div>
+  </div>
+</div>
+
+{% include 'scripts.html' %}
+<script type = "text/javascript" src = "{% static 'js/agregarusuario.js' %}"></script>
+</body>
+</html>

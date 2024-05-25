@@ -1,0 +1,100 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% include 'estilos.html' %}
+</head>
+<body>
+{% include 'menu.html' %}
+<div class="container">
+
+        <button class="btn btn-outline-primary" onclick="Editar(0)" data-bs-toggle="modal" data-bs-target="#exampleModal"
+        >Nuevo</button>
+    </div>
+<div class="container">
+    <div id="divTabla"> </div>
+</div>
+
+<div class="modal fade formpelicula" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Añadir Pelicula</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                  <label  class="form-label">Id pelicula</label>
+                  <input type="text" class="form-control" readonly id="txtidpelicula"   placeholder="Id pelicula">
+            </div>
+
+            <div class="mb-3">
+              <label  class="form-label">Titulo</label>
+              <input type="text" class="form-control"  id="txttitulo" placeholder="Titulo Pelicula">
+            </div>
+
+            <div class="mb-3">
+              <label  class="form-label">Genero</label>
+              <select id="cboGenero" class="form-control">
+
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label  class="form-label">Pais</label>
+              <select id="cboPais" class="form-control">
+
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label  class="form-label">Tipo censura</label>
+              <select id="cboTipoCensura" class="form-control">
+
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label  class="form-label">Sipnosis</label>
+              <input type="text" class="form-control"  id="txtsipnopsis" placeholder="Sipnosis Pelicula">
+            </div>
+
+            <div class="mb-3">
+              <label  class="form-label">Duracion</label>
+              <input type="number" min="0" class="form-control"  id="txtduracion" placeholder="Duracion Pelicula">
+            </div>
+
+            <div class="mb-3">
+              <label  class="form-label">Fecha Estreno</label>
+                <input type="text" class="form-control" id="txtfechaestreno"></input>
+            </div>
+
+            <div class="mb-3">
+              <label  class="form-label">Foto</label>
+                <img src="" class="form-control" id="imgfoto" width="100" height="100"/>
+              <input type="file" class="form-control"  id="fupfot" onchange="previewfoto()">
+            </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btncerrar" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" onclick="guardarDatos()" class="btn btn-primary">Guardar</button>
+      </div>
+        <div id="diverrores">
+
+        </div>
+    </div>
+  </div>
+</div>
+
+{% include 'scripts.html' %}
+<script type = "text/javascript" src = "{% static 'js/pelicula.js' %}"></script>
+</body>
+</html>

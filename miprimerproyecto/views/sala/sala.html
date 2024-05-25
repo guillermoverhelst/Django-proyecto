@@ -1,0 +1,82 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% include 'estilos.html'%}
+</head>
+<body>
+{% include 'menu.html'%}
+<div class="container mt-3">
+    <button class="btn btn-secondary mb-2" onclick="Editar(0)" data-bs-toggle="modal" data-bs-target="#exampleModal"
+        >Nuevo</button>
+</div>
+<div class="input-group mb-3 container" >
+
+        <select id="cbocinebuscar" class="form-control">
+
+        </select>
+        <button class="btn btn-outline-primary" onclick="Buscar()" type="button" id="button-addon2">Buscar</button>
+    </div>
+<div class="container">
+    <div id="divTabla"></div>
+</div>
+
+<div class="modal fade formsala" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                  <label  class="form-label">Id Sala</label>
+                  <input type="text" class="form-control" readonly id="txtidsala"   placeholder="Id Sala">
+            </div>
+
+            <div class="mb-3">
+              <label  class="form-label">Nombre</label>
+              <input type="text" class="form-control"  id="txtnombre" placeholder="Nombre Sala">
+            </div>
+
+
+            <div class="mb-3">
+              <label  class="form-label">Cine</label>
+              <select id="cbocine" class="form-control">
+
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label  class="form-label">Numero columnas</label>
+              <input type="number" min="0" class="form-control"  id="txtnumerocolumnas" placeholder="Numero columnas">
+            </div>
+
+            <div class="mb-3">
+              <label  class="form-label">Numero filas</label>
+              <input type="number" min="0" class="form-control"  id="txtnumerofilas" placeholder="Numero filas">
+            </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btncerrar" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" onclick="guardarDatos()" class="btn btn-primary">Guardar</button>
+      </div>
+        <div id="diverrores">
+
+        </div>
+    </div>
+  </div>
+</div>
+
+{% include 'scripts.html' %}
+<script type = "text/javascript" src = "{% static 'js/sala.js' %}"></script>
+</body>
+</html>
